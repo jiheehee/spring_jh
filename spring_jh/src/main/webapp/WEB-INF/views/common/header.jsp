@@ -47,12 +47,32 @@
                   	<a class="nav-link" href="${path }/demo/demo.do">Demo</a>
                   	<a class="nav-link" href="${path }/demo/demoList.do">DemoList</a>
                   </li>
+                  <li class="nav-item active">
+                  	<a class="nav-link" href="${path }/memo/memolist">메모</a>
+                  	<%-- <a class="nav-link" href="${path }/memo/memoList.do">MemoList</a> --%>
+                  </li>
                </ul>
+               <c:if test="${empty sessionScope.loginMember }">
                <button class="btn btn-outline-success my-2 my-sm-0"
                   data-toggle="modal" data-target="#loginModal">로그인</button>
                &nbsp;
-               <button class="btn btn-outline-primary my-2 my-sm-0" onclick="">
-                  회원가입</button>
+	               <button class="btn btn-outline-primary my-2 my-sm-0" 
+	               		onclick="location.assign('${path}/member/enrollmember.do');">
+	                  회원가입
+	               </button>
+               </c:if>
+               <c:if test="${not empty sessionScope.loginMember }">
+		               <span>
+		               	<a href="">
+		               		<c:out value="${sessionScope.loginMember.userName }"/>
+		               	</a>
+		               	님, 환영합니다:)
+	               </span>
+	               <button class="btn btn-outline-dark"
+	               				onclick="location.replace('${path}/member/logout.do')">
+	               		로그아웃
+	               </button>
+               </c:if>
             </div>
          </nav>
          

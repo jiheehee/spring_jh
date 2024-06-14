@@ -5,7 +5,10 @@
 	                 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+		/WEB-INF/spring/root-context.xml
+		/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
 	<!-- servlet filter 등을 공유하는 spring container를 생성 -->
 	<listener>
@@ -19,6 +22,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/appServlet/aop-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

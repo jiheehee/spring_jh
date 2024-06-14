@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybtis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memo">
+
+	<select id="selectMemoAll" resultType="memo">
+		SELECT * FROM MEMO ORDER BY MEMODATE DESC <!-- 최신작성한것부터 보느라 오더바이 -->
+	</select>
+	
+	<select id="selectMemoCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMO <!-- 최신작성한것부터 보느라 오더바이 -->
+	</select>
+
+	<insert id="insertMemo" parameterType="memo">
+		INSERT INTO MEMO VALUES(SEQ_MEMONO.NEXTVAL,#{memo},#{password},DEFAULT)
+	</insert>
+
+</mapper>

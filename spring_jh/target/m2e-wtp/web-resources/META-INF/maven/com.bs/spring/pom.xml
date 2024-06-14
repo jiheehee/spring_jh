@@ -5,12 +5,14 @@
   <version>0.1</version>
   <packaging>war</packaging>
   <name>springtest</name>
-  	<properties>
-		<java-version>17</java-version>
-		<org.springframework-version>5.3.28</org.springframework-version>
-		<org.aspectj-version>1.9.19</org.aspectj-version>
-		<org.slf4j-version>2.0.7</org.slf4j-version>
-	</properties>
+<properties>
+      <java-version>17</java-version>
+      <org.springframework-version>5.3.28</org.springframework-version>
+   
+      <org.springsecurity-version>5.8.4</org.springsecurity-version>
+      <org.aspectj-version>1.9.19</org.aspectj-version>
+      <org.slf4j-version>2.0.7</org.slf4j-version>
+   </properties>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -185,6 +187,60 @@
 		    <artifactId>commons-dbcp</artifactId>
 		    <version>1.4</version>
 		</dependency>
+		
+		<!-- 
+			hibernate validator 이용하기
+			유효성검사를 위한 라이브러리
+			6.2.5.버전
+		 -->
+		 
+		 		
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.2.5.Final</version>
+		</dependency>
+		 
+		 <!-- 
+		 	spring-security이용 패스워드 암호화 적용하기
+		 -->
+		 
+	<dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-core</artifactId>
+          <version>${org.springsecurity-version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-web</artifactId>
+          <version>${org.springsecurity-version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-config</artifactId>
+          <version>${org.springsecurity-version}</version>
+      </dependency>
+      
+      <!--
+      	jdbc logger를 출력하는 라이브러리
+      	sql문, resultSet의 결과를 출력해주느 로커
+      -->
+      <dependency>
+	    <groupId>org.lazyluke</groupId>
+	    <artifactId>log4jdbc-remix</artifactId>
+	    <version>0.2.7</version>
+	</dependency>
+	
+	<!-- aspectjweaver -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>${org.aspectj-version}</version>
+	    <scope>runtime</scope>
+	</dependency>
+
+
+
 
 
 		
