@@ -12,7 +12,7 @@
    	<!-- @Controller클래스를 검색하게 하는 태그 설정 -> 컨트롤러를 등록해놓고 핸들러가 이걸 찾아서 연결해주게 함 -->
    	<annotation-driven />
    	
-   	<resources mapping="/resources/**" location="/resources"/>
+   	<resources mapping="/resources/**" location="/resources/"/>
    	
    	<!-- 기본 viewresolver 구현체 등록 -->
    	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

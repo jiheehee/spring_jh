@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybtis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+	<resultMap id="boardMap" type="board">
+		<id column="boardno" property="boardNo"></id>
+		<result column="boardtitle" property="boardTitle"></result>
+		<result column="boardwriter" property="boardTitle"></result>
+		<result column="boardcontent" property="boardContent"></result>
+		<result column="boarddate" property="boardDate"></result>
+		<result column="boardreadcount" property="boardReadCount"></result>
+		<collcation property="files" ofType="attachment">
+			<id column="attachmentno" property="attachNo"></id>
+			<result column="originalfilename" property="originalFilename"/>
+			<result column="renamedfilename" property="renamedfilename"/>
+			<result column="boardno" property="boardNo"/>
+			<result column="downloadcount" property="downloadCount"/>
+			<result column="status" property="status"/>
+			<result column="uploadDate" property="uploadDate"/>
+		</collcation>
+	</resultMap>	
+
+  <select id="boardList" resultMap="boardMap">
+  	SELECT * FROM BOARD JOIN LEFT JOIN ATTACHMENT USING(BOARDNO) 
+  	ORDER BY BOARDDATE DESC
+  </select>
+  
+  <select id="boardByNo" resultMap="_int">  
+  	SELECT * FROM BOARD JOIN LEFT JOIN ATTACHMENT USING(BOARDNO) 
+  	ORDER BY BOARDDATE DESC WHERE BOARDNO=#{boardNo}
+  </select>
+  
+  <select id="boardCount" resultType="_int">
+  	SELECT COUNT(*) FROM BOARD
+  </select>
+  
+  <insert id="insertboard" parameterType="board">
+  	INSERT INTO BOARD VALUES(SEQ_BOARDNO.NEXTVAL, #{boardTitle}, #{boardWriter},#{boaradContent},
+  	#{boardDate},#{boardReadCount})
+  </insert>
+  
+  <update id="boardReadcount" parameterType="_int">
+  	UPDATE BOARD SET BOARDREADCOUTN=BOARDREADCOUTN+1 WHERE BOARD
+  </update>
+  
+  
+</mapper>

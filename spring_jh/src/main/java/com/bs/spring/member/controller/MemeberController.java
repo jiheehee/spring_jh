@@ -39,6 +39,7 @@ public class MemeberController {
 		log.debug("{}",m);
 		System.out.println(m);
 		String page="";
+		if(page.equals("")) throw new RuntimeException(); //checked exception
 		
 //		if(m!=null&&m.getPassword().equals(pw)) {
 		if(m!=null&&pwencoder.matches(pw, m.getPassword())) {
